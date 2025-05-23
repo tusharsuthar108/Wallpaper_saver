@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Welcome to Tushar's Wallpaper Saver</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body class="bg-zinc-900 text-white min-h-screen flex items-center justify-center">
+
+    <div class="w-full max-w-2xl bg-zinc-800 rounded-xl shadow-lg p-10">
+
+        <!-- Navigation -->
+        <div class="nav mb-8 flex justify-between items-center">
+            <h1 class="text-4xl font-bold">Create Wallpaper</h1>
+            <a class="text-blue-400 hover:text-blue-600 transition duration-300" href="/read">Show all Wallpapers</a>
+        </div>
+
+        <!-- Intro Section -->
+        <div class="mb-12 p-8 bg-zinc-700 rounded-lg shadow-md">
+            <h2 class="text-3xl font-bold mb-4">🖼️ About Wallpaper Saver</h2>
+            <p class="text-zinc-300 leading-relaxed">
+                The <strong>Wallpaper Saver</strong> project for Google Chrome allows users to store wallpaper URLs for 
+                future reference, making it easy to revisit and find their favorite wallpapers. Instead of downloading 
+                the images, the extension saves the URL, ensuring that users can quickly access and view the wallpaper again 
+                whenever needed. 
+            </p>
+            <p class="mt-4 text-zinc-300 leading-relaxed">
+                The project also offers features for organizing saved URLs into categories or folders, simplifying the process 
+                of finding specific wallpapers. This makes it a convenient tool for users to manage and keep track of their 
+                preferred wallpapers without consuming local storage.
+            </p>
+        </div>
+
+        <!-- Spacing before form -->
+        <div class="mt-12"></div>
+
+        <!-- Create User Form -->
+        <form action="/create" method="post" class="space-y-8">
+
+            <div>
+                <label for="name" class="block text-sm font-medium">Name</label>
+                <input class="w-full px-5 py-3 border-2 bg-zinc-700 outline-none rounded-lg focus:ring-2 focus:ring-blue-500 transition" 
+                    type="text" id="name" name="name" placeholder="Enter name" required>
+            </div>
+
+            <div>
+                <label for="email" class="block text-sm font-medium">Email</label>
+                <input class="w-full px-5 py-3 border-2 bg-zinc-700 outline-none rounded-lg focus:ring-2 focus:ring-blue-500 transition" 
+                    type="email" id="email" name="email" placeholder="Enter email" required>
+            </div>
+
+            <div>
+                <label for="image" class="block text-sm font-medium">Image URL</label>
+                <input class="w-full px-5 py-3 border-2 bg-zinc-700 outline-none rounded-lg focus:ring-2 focus:ring-blue-500 transition" 
+                    type="url" id="image" name="image" placeholder="Enter image URL" required>
+            </div>
+
+            <!-- Spacing and Centering for Button -->
+            <div class="flex justify-center mt-10">
+                <input class="px-8 py-4 bg-blue-500 hover:bg-blue-600 text-black font-semibold rounded-lg cursor-pointer transition duration-300 shadow-md"
+                    type="submit" value="Create Wallpaper">
+            </div>
+
+        </form>
+
+        <!-- Spacing before Instructions -->
+        <div class="mt-12"></div>
+
+        <!-- Instructions Section -->
+        <div class="mt-12 p-8 bg-zinc-700 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4">📌 Steps to Use Image URL</h2>
+
+            <!-- Phone Instructions -->
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold mb-2">📱 On Phone:</h3>
+                <ul class="list-disc pl-5 space-y-2 text-zinc-300">
+                    <li>Search your favorite character on <strong>Google Chrome</strong> → Go to the image section.</li>
+                    <li>Select an image you like.</li>
+                    <li>Tap the <strong>Share</strong> button.</li>
+                    <li>Select <strong>"Copy image link"</strong>.</li>
+                    <li>link must be in http or https form</li>
+                    <li>Paste the URL in the form above.</li>
+                </ul>
+            </div>
+
+            <!-- PC Instructions -->
+            <div>
+                <h3 class="text-xl font-semibold mb-2">💻 On PC:</h3>
+                <ul class="list-disc pl-5 space-y-2 text-zinc-300">
+                    <li>Go to <strong>Google</strong> → Select <strong>Images</strong>.</li>
+                    <li>Click on the desired image.</li>
+                    <li>Right-click → Select <strong>Copy image address</strong>.</li>
+                    <li>Paste the URL in the form above.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
