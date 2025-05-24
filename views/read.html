@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>All Wallpapers</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <!-- Material Icons for button icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body class="bg-zinc-900 text-white min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-4xl bg-zinc-800 rounded-xl shadow-lg p-10">
+      <!-- Navigation -->
+      <div class="nav mb-8 flex justify-between items-center">
+        <h1 class="text-4xl font-bold">All Wallpapers</h1>
+        <a class="text-blue-400 hover:text-blue-600 transition duration-300" href="/">Create Wallpaper</a>
+      </div>
+      <!-- User List -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Wallpaper List</h2>
+        <ul id="user-list" class="space-y-4"></ul>
+      </div>
+    </div>
+    <script>
+      fetch("/api/users")
+        .then((res) => res.json())
+        .then((users) => {
+          const list = document.getElementById("user-list");
+          if (users.length === 0) {
+            list.innerHTML =
+              '<li class="text-zinc-400">No wallpapers found.</li>';
+          } else {
+            list.innerHTML = users
+              .map(
+                (user) => `
+        <li class="bg-zinc-700 rounded-lg p-4 flex flex-col md:flex-row md:items-center md:justify-between transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+          <div class="flex items-center space-x-4">
+            <img src="${user.image}" alt="Wallpaper" class="w-32 h-20 object-cover rounded shadow-lg border-2 border-zinc-600" onerror="this.src='/default.jpg'">
+            <div>
+              <div class="font-bold text-lg">${user.name}</div>
+              <div class="text-zinc-400 text-sm">${user.email}</div>
+            </div>
+          </div>
+          <div class="mt-4 md:mt-0 flex flex-col md:flex-row gap-2 md:gap-4">
+            <a href="${user.image}" target="_blank"
+               class="flex items-center justify-center px-5 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold shadow transition duration-200">
+              <span class="material-icons mr-2" style="font-size:18px;">open_in_new</span> Show Full Image
+            </a>
+            <a href="/edit/${user._id}"
+               class="flex items-center justify-center px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold shadow transition duration-200">
+              <span class="material-icons mr-2" style="font-size:18px;">edit</span> Edit
+            </a>
+            <a href="/delete/${user._id}"
+               class="flex items-center justify-center px-5 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-semibold shadow transition duration-200"
+               onclick="return confirm('Delete this wallpaper?')">
+              <span class="material-icons mr-2" style="font-size:18px;">delete</span> Delete
+            </a>
+          </div>
+        </li>
+      `
+              )
+              .join("");
+          }
+        });
+    </script>
+  </body>
+</html>

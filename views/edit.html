@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Edit Wallpaper</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body class="bg-zinc-900 text-white min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-2xl bg-zinc-800 rounded-xl shadow-lg p-10">
+        <!-- Navigation -->
+        <div class="nav mb-8 flex justify-between items-center">
+            <h1 class="text-4xl font-bold">Edit Wallpaper</h1>
+            <a class="text-blue-400 hover:text-blue-600 transition duration-300" href="/read">Show all Wallpapers</a>
+        </div>
+        <!-- Edit Form (static, no dynamic data) -->
+        <form action="/update/USER_ID" method="post" class="space-y-8">
+            <div>
+                <label for="name" class="block text-sm font-medium">Name</label>
+                <input class="w-full px-5 py-3 border-2 bg-zinc-700 outline-none rounded-lg focus:ring-2 focus:ring-blue-500 transition"
+                    type="text" id="name" name="name" placeholder="Enter name" required>
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-medium">Email</label>
+                <input class="w-full px-5 py-3 border-2 bg-zinc-700 outline-none rounded-lg focus:ring-2 focus:ring-blue-500 transition"
+                    type="email" id="email" name="email" placeholder="Enter email" required>
+            </div>
+            <div>
+                <label for="image" class="block text-sm font-medium">Image URL</label>
+                <input class="w-full px-5 py-3 border-2 bg-zinc-700 outline-none rounded-lg focus:ring-2 focus:ring-blue-500 transition"
+                    type="url" id="image" name="image" placeholder="Enter image URL" required>
+            </div>
+            <div class="flex justify-center mt-10">
+                <input class="px-8 py-4 bg-blue-500 hover:bg-blue-600 text-black font-semibold rounded-lg cursor-pointer transition duration-300 shadow-md"
+                    type="submit" value="Update Wallpaper">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
